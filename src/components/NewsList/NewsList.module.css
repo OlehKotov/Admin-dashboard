@@ -1,0 +1,32 @@
+.newsListWrap {
+  margin-top: 24px;
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .newsListWrap {
+    margin-top: 44px;
+  }
+
+  .newsList {
+    display: flex;
+    flex-direction: row;
+    gap: 60px 24px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1280px) {
+  .newsListWrap {
+    margin-top: 60px;
+  }
+
+  .newsList {
+    gap: 35px;
+  }
+}
