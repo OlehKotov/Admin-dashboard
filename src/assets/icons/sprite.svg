@@ -14,7 +14,12 @@
       </clipPath>
     </defs>
   </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 12" id="Vector">
+    <path d="M1 0V12" stroke="#1D1E21" stroke-opacity="0.4"></path>
+  </symbol>
 </svg>
+
+
 
 
 

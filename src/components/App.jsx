@@ -6,6 +6,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "../components/RestrictedRoute/RestrictedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -20,10 +21,10 @@ function App() {
           }
         />
         <Route
-          path="/profile"
+          path="/dashboard"
           element={
             <PrivateRoute>
-              
+              <Dashboard />
             </PrivateRoute>
           }
         />
