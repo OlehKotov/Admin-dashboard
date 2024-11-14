@@ -1,7 +1,6 @@
 import React from "react";
 import css from "./ModalApproveAction.module.css";
 import BaseModal from "../BaseModal/BaseModal";
-import cat from "../../assets/images/cat-min.png";
 import sprite from "../../assets/icons/sprite.svg";
 
 const ModalApproveAction = ({
@@ -27,7 +26,7 @@ const ModalApproveAction = ({
             <use xlinkHref={`${sprite}#x`} />
           </svg>
         </button>
-        <img src={cat} alt={"cat"} className={css.img} />
+        <img  alt={"cat"} className={css.img} />
         <h2 className={css.header}>Already leaving?</h2>
         {isError && (
           <p className={css.error}>An error occurred. Please try again.</p>

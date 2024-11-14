@@ -5,12 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { logInValidationschema } from "../../validation/logInValidationShema";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import PetBlock from "../PetBlock/PetBlock";
-import dogImageMobile from "../../assets/images/dog-mob-min.jpg";
-import dogImageTablet from "../../assets/images/dog-tab-min.png";
-import dogImageDesktop from "../../assets/images/dog-dt-min.png";
-import { login } from "../../redux/users/userOps";
+import { getCurrentUser, login } from "../../redux/users/userOps";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,100 +30,76 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data) => {
-    const { userData } = data;
-    dispatch(login(data)).then(() => {
-      reset();
+    dispatch(login(data)).then((result) => {
+      if (login.fulfilled.match(result)) {
+        dispatch(getCurrentUser());
+        reset();
+      }
     });
   };
 
   return (
     <div className={css.containerForm}>
-      <PetBlock
-        srcMobile={dogImageMobile}
-        srcTablet={dogImageTablet}
-        srcDesktop={dogImageDesktop}
-        alt="dog"
-        className="image"
-      />
-      <div className={css.registerForm}>
-        <h1 className={css.headerForm}>Log in</h1>
-        <p className={css.textForm}>
-          Welcome! Please enter your credentials to login to the platform:.
-        </p>
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+        <div className={css.inputWrapper}>
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <input
+                className={`${css.loginInput} ${css.inputText} ${
+                  errors.email ? css.errorInput : ""
+                }`}
+                type="text"
+                placeholder="Email address"
+                {...field}
+              />
+            )}
+          />
+          {errors.email && (
+            <div className={css.error}>{errors.email.message}</div>
+          )}
+        </div>
 
-        <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={css.inputWrapper}>
+        <div className={css.inputWrapper}>
+          <div className={css.input}>
             <Controller
-              name="email"
+              name="password"
               control={control}
               render={({ field }) => (
                 <input
-                  className={`${css.registerInput} ${
-                    errors.email ? css.errorInput : ""
+                  className={`${css.loginInput} ${css.inputText} ${
+                    errors.password ? css.errorInput : ""
                   }`}
-                  type="text"
-                  placeholder="Email"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
                   {...field}
                 />
               )}
             />
-            {errors.email && (
-              <div className={css.error}>{errors.email.message}</div>
-            )}
-          </div>
-
-          <div className={css.inputWrapper}>
-            <div className={css.input}>
-              <Controller
-                name="password"
-                control={control}
-                render={({ field }) => (
-                  <input
-                    className={`${css.registerInput} ${
-                      errors.password ? css.errorInput : ""
-                    }`}
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Password"
-                    {...field}
-                  />
-                )}
+            <svg
+              className={`${css.passwordToggleIcon} ${
+                errors.password ? css.errorIcon : ""
+              }`}
+              onClick={togglePasswordVisibility}
+              width="18px"
+              height="18px"
+            >
+              <use
+                xlinkHref={`${sprite}#${showPassword ? "eye" : "eye-off"}`}
               />
-              <svg
-                className={`${css.passwordToggleIcon} ${
-                  errors.password ? css.errorIcon : ""
-                }`}
-                onClick={togglePasswordVisibility}
-                width="20px"
-                height="20px"
-              >
-                <use
-                  xlinkHref={`${sprite}#${
-                    errors.password
-                      ? "cross-small"
-                      : showPassword
-                      ? "eye"
-                      : "eye-off"
-                  }`}
-                />
-              </svg>
-            </div>
-
-            {errors.password && (
-              <div className={css.error}>{errors.password.message}</div>
-            )}
+            </svg>
           </div>
 
-          <button type="submit" className={css.button} disabled={isSubmitting}>
-            Log In
-          </button>
-          <p className={css.navigationText}>
-            Don’t have an account?{" "}
-            <NavLink to="/register" className={css.navigationLink}>
-              Register
-            </NavLink>
-          </p>
-        </form>
-      </div>
+          {errors.password && (
+            <div className={css.error}>{errors.password.message}</div>
+          )}
+        </div>
+
+        <button type="submit" className={css.button} disabled={isSubmitting}>
+          Log In
+        </button>
+      </form>
     </div>
   );
 };

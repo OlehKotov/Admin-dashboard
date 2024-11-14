@@ -1,64 +1,33 @@
-.containerForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.registerForm {
-  border-radius: 30px;
-  width: 335px;
-  height: 422px;
-  background-color: #fff;
-  padding: 60px 20px;
-}
-
-.headerForm {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 100%;
-  letter-spacing: -0.04em;
-  color: #262626;
-}
-
-.textForm {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.02em;
-  color: #262626;
-  margin-top: 12px;
-}
-
 .form {
-  margin-top: 24px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+  margin-bottom: 210px;
 }
 
 .inputWrapper {
   position: relative;
 }
 
-.registerInput {
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  border-radius: 30px;
-  padding: 12px 12px 12px 12px;
-  width: 295px;
-  height: 42px;
+.loginInput {
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  width: 335px;
+  height: 44px;
   outline: none;
   background-color: transparent;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 129%;
-  letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.5);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+  padding: 13px 45px 13px 18px;
 }
 
-.registerInput:active,
-.registerInput:focus {
-  border: 1px solid #f6b83d;
+.loginInput:active,
+.loginInput:focus {
+  border: 1px solid #59b17a;
 }
 
 .input {
@@ -67,7 +36,7 @@
 
 .error {
   position: absolute;
-  top: 41px;
+  top: 45px;
   font-weight: 500;
   font-size: 10px;
   line-height: 120%;
@@ -82,7 +51,7 @@
 
 .passwordToggleIcon {
   position: absolute;
-  right: 12px;
+  right: 18px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -90,17 +59,15 @@
 }
 
 .button {
-  border-radius: 30px;
-  padding: 12px 99px;
-  width: 295px;
-  height: 42px;
-  background: #f6b83d;
-  margin-top: 30px;
-  font-weight: 700;
+  border-radius: 60px;
+  padding: 13px 147px;
+  width: 335px;
+  height: 44px;
+  background: #59b17a;
+  margin-top: 26px;
+  font-weight: 500;
   font-size: 14px;
   line-height: 129%;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
   color: #fff;
   font-family: "Manrope", sans-serif;
   transition: background-color 0.3s ease;
@@ -108,98 +75,60 @@
 
 .button:hover,
 .button:active {
-  background-color: #f9b020;
+  background-color: #3f945f;
 }
 
-.navigationText {
-  font-weight: 500;
+.inputText {
+  font-weight: 400;
   font-size: 12px;
-  line-height: 117%;
-  letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.5);
-  margin-top: 2px;
-}
-
-.navigationLink {
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  color: #f6b83d;
-  transition: color 0.3s ease;
-}
-
-.navigationLink:hover,
-.navigationLink:active {
-  color: #f9b020;
+  line-height: 150%;
+  color: black;
 }
 
 @media (min-width: 768px) {
-  .containerForm {
-    gap: 16px;
-  }
-
-  .registerForm {
-    border-radius: 60px;
-    width: 704px;
-    height: 560px;
-    padding: 71px 140px;
-  }
-
-  .headerForm {
-    font-size: 54px;
-  }
-
-  .textForm {
-    font-size: 18px;
-    line-height: 122%;
-    margin-top: 16px;
-  }
-
   .form {
-    margin-top: 32px;
-    gap: 16px;
+    margin-top: 50px;
+    margin-bottom: 252px;
+    align-items: start;
   }
 
-  .registerInput {
-    width: 424px;
-    height: 52px;
-    font-size: 16px;
-    line-height: 125%;
-  }
-
-  .error {
-    font-size: 14px;
-    top: 51px;
-  }
-
-  .passwordToggleIcon {
-    right: 15px;
+  .loginInput {
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    border-radius: 60px;
+    width: 323px;
+    height: 44px;
+    outline: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: rgba(29, 30, 33, 0.4);
   }
 
   .button {
-    padding: 16px 99px;
-    width: 424px;
-    height: 52px;
-    margin-top: 48px;
-    font-size: 16px;
-    line-height: 125%;
+    padding: 13px 141px;
+    width: 323px;
+    height: 44px;
   }
 
-  .navigationText {
-    font-size: 14px;
-    line-height: 143%;
+  .inputText {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: black;
   }
 }
 
-@media (min-width: 1280px) {
-  .containerForm {
-    flex-direction: row;
-    gap: 32px;
+@media (min-width: 1440px) {
+  .form {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  .registerForm {
-    width: 592px;
-    height: 654px;
-    padding: 118px 84px;
+  .inputText {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: black;
   }
 }

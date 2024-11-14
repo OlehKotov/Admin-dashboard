@@ -1,21 +1,105 @@
 .container {
-  background-color: #f9f9f9;
+  background-color: #f7f8fa;
   display: flex;
   flex-direction: column;
+  width: 375px;
+  padding: 24px 20px;
+  background-image: url(./../../assets/images/elements-min.png);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  gap: 14px;
   align-items: center;
-  gap: 15px;
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+}
+
+.headerText {
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  color: #1d1e21;
+}
+
+.textBlock {
+  width: 335px;
+  margin-top: 148px;
+  position: relative;
+}
+
+.textBlockHeader {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 121%;
+  color: #1d1e21;
+}
+
+.textBlockHeader span {
+  color: #59b17a;
+}
+
+.textBlockImg {
+  position: absolute;
+  top: -56px;
+  right: 20px;
+  background-image: url("./../../assets/images/white-round-pill.png");
+  width: 95px;
+  height: 93px;
+  background-size: cover;
 }
 
 @media (min-width: 768px) {
   .container {
-    gap: 32px;
-    width: 100%;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
+    width: 768px;
+    padding: 24px 32px;
+    background-image: url(./../../assets/images/elements-min-768.png);
+  }
+
+  .textBlock {
+    width: 614px;
+    margin-top: 204px;
+  }
+
+  .textBlockHeader {
+    font-size: 54px;
+    line-height: 111%;
+    color: #1d1e21;
+  }
+
+  .textBlockImg {
+    background-image: url("./../../assets/images/white-round-pill-768.png");
+    width: 179px;
+    height: 175px;
+    top: -105px;
+    right: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    padding: 28px 100px;
+    background-image: url(./../../assets/images/elements-min-1440.png);
+  }
+
+  .textBlock {
+    margin-top: 0px;
+  }
+
+  .textBlockImg {
+    background-image: url("./../../assets/images/white-round-pill-768.png");
+    width: 179px;
+    height: 175px;
+    top: -105px;
+    right: 20px;
+  }
+
+  .textBlockWrap {
+    display: flex;
+    gap: 150px;
+    margin-top: 226px;
+    margin-bottom: 234px;
   }
 }

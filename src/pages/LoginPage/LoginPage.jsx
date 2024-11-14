@@ -1,23 +1,26 @@
 import React from "react";
 import css from "./LoginPage.module.css";
-import Header from "../../components/Header/Header";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import logo from "./../../assets/images/Mask_group.png";
+import LoginForm from "./../../components/LoginForm/LoginForm";
 
 const LoginPage = () => {
   return (
     <div className={css.container}>
-      <Header
-        isHeaderAuth="headerAuth"
-        variant="auth"
-        width="17"
-        height="13"
-        icon="iconAuth"
-        burgerColor="#000000"
-        closeColor="#ffffff"
-        menuClass="menuOrange"
-        authNav="mobMenuLogInBtnOrange"
-      />
-      <LoginForm />
+      <div className={css.header}>
+        <img src={logo} alt="Logo" className={css.headerImg} />
+        <p className={css.headerText}>E-Pharmacy</p>
+      </div>
+
+      <div className={css.textBlockWrap}>
+        <div className={css.textBlock}>
+          <h1 className={css.textBlockHeader}>
+            Your medication, delivered Say goodbye to all{" "}
+            <span>your healthcare</span> worries with us
+          </h1>
+          <div className={css.textBlockImg}></div>
+        </div>
+        <LoginForm />
+      </div>
     </div>
   );
 };
