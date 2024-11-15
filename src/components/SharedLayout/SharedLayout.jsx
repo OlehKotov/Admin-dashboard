@@ -1,11 +1,13 @@
 import React from 'react'
 import css from "./SharedLayout.module.css";
 import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
 
 const SharedLayout = () => {
   return (
-    <div>
+    <div className={css.sharedLayoutContainer}>
         <Header />
+        <Sidebar />
     </div>
   )
 }

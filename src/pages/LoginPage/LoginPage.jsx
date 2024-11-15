@@ -2,10 +2,12 @@ import React from "react";
 import css from "./LoginPage.module.css";
 import logo from "./../../assets/images/Mask_group.png";
 import LoginForm from "./../../components/LoginForm/LoginForm";
+import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 
 const LoginPage = () => {
   return (
     <div className={css.container}>
+      <DocumentTitle>Login page</DocumentTitle>
       <div className={css.header}>
         <img src={logo} alt="Logo" className={css.headerImg} />
         <p className={css.headerText}>E-Pharmacy</p>

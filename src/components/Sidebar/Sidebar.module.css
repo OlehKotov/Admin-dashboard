@@ -1,0 +1,96 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 78px;
+  height: 100vh;
+  background-color: #f7f8fa;
+  border: none;
+  flex-direction: column;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+  padding: 20px;
+}
+
+.menuOpen {
+  display: flex;
+  align-items: center;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.menuContent {
+  flex-grow: 1;
+  margin-top: 92px;
+}
+
+.burgerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 24px;
+  left: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 30, 33, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+}
+
+.overlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    width: 84px;
+  }
+
+  .menuContent {
+    margin-top: 100px;
+  }
+
+  .burgerButton {
+    left: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    border-right: 1px solid rgba(29, 30, 33, 0.1);
+    width: 80px;
+    height: 721px;
+    background-color: #f7f8fa;
+    padding-top: 40px;
+  }
+}
