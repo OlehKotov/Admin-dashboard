@@ -1,0 +1,89 @@
+.statisticsContainer {
+  background-color: #f7f8fa;
+  width: 375px;
+}
+
+.statisticsBlocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.statisticsBlock {
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 8px;
+  padding: 14px;
+  width: 157px;
+  height: 98px;
+  padding: 14px;
+  background-color: #fff;
+}
+
+.statisticsBlock:first-of-type {
+  border: 1px solid #59b17a;
+}
+
+.statisticsBlockName {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 117%;
+  color: rgba(29, 30, 33, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statisticsBlockValue {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d1e21;
+  margin-top: 32px;
+}
+
+@media (min-width: 768px) {
+  .statisticsContainer {
+    width: 768px;
+  }
+
+  .statisticsBlocks {
+    flex-wrap: nowrap;
+    padding: 20px 32px 40px 32px;
+  }
+
+  .statisticsBlock {
+    padding: 14px 18px;
+    width: 221px;
+    height: 108px;
+  }
+
+  .statisticsBlockName {
+    line-height: 150%;
+  }
+
+  .statisticsBlockName svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .statisticsBlockValue {
+    font-size: 24px;
+    line-height: 133%;
+    margin-top: 28px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .statisticsContainer {
+    width: 1360px;
+  }
+
+  .statisticsBlocks {
+    padding: 20px 40px 40px 40px;
+  }
+
+  .statisticsBlock {
+    width: 240px;
+  }
+}

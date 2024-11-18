@@ -5,11 +5,10 @@ import Title from "../Title/Title";
 import SubTitle from "../SubTitle/SubTitle";
 import { selectUserEmail } from "../../redux/selectors";
 import { useSelector } from "react-redux";
-import Sidebar from "../Sidebar/Sidebar";
 import sprite from "../../assets/icons/sprite.svg";
 import LogoutBtn from "../LogoutBtn/LogoutBtn";
 
-const Header = () => {
+const Header = ({page}) => {
   const email = useSelector(selectUserEmail);
   return (
     <header className={css.header}>
@@ -17,7 +16,7 @@ const Header = () => {
       <div className={css.headerTitleContainer}>
         <Title />
         <div className={css.headerSubTitle}>
-          <SubTitle>Dashboard</SubTitle>
+          <SubTitle>{page}</SubTitle>
           <div className={css.headerSubTitleSeparator}>
             <svg width="2" height="12">
               <use xlinkHref={`${sprite}#Vector`} />

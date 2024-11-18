@@ -1,0 +1,155 @@
+.recentCustomers {
+  width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #f7f8fa;
+  padding-bottom: 20px;
+}
+
+.header {
+  border: 0px solid rgba(29, 30, 33, 0.08);
+  border-radius: 8px 8px 0 0;
+  width: 335px;
+  height: 48px;
+  background-color: #e7f1ed;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d1e21;
+  padding: 14px;
+}
+
+.tablecontainer {
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 0 0 8px 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 335px;
+  border-top: 0px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: rgba(29, 30, 33, 0.4);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 10px;
+}
+
+.table th,
+.table td {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+  padding-left: 10px;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: none;
+}
+
+.table td {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: #1d1e21;
+  padding-left: 10px;
+}
+
+.table td:first-child {
+  padding-left: 0;
+}
+
+.tableName {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tableName img {
+  border-radius: 30px;
+  width: 24px;
+  height: 24px;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (min-width: 768px) {
+  .recentCustomers {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .header {
+    width: 704px;
+    height: 64px;
+    font-size: 18px;
+    line-height: 133%;
+    padding: 20px;
+  }
+
+  .tablecontainer {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 704px;
+  }
+
+  .table thead {
+    font-size: 14px;
+    line-height: 129%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .table th,
+  .table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .table td {
+    font-size: 16px;
+    line-height: 112%;
+    padding-left: 20px;
+  }
+
+  .tableName {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tableName img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .recentCustomers {
+    width: 630px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .header {
+    width: 630px;
+  }
+
+  .tablecontainer {
+    width: 630px;
+  }
+}
