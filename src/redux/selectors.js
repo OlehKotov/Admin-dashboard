@@ -10,5 +10,7 @@ export const selectIsError = (state) => state.user.isError;
 
 export const selectDashboard = (state) => state.pharmacy.dashboard;
 
+export const selectAllOrders = (state) => state.pharmacy.allOrders;
+
 
 
