@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { filterOrdersByName, getAllOrders, getDashboard } from "./pharmacyOps";
+import { filterOrdersByName, getOrders, getDashboard, getCustomers, filterCustomersByName, getProducts, filterProductsByName } from "./pharmacyOps";
 
 const initialState = {
   dashboard: {
@@ -9,7 +9,12 @@ const initialState = {
     latestCustomers: [],
     incomeExpenses: [],
   },
-  allOrders: [],
+  orders: [],
+  customers: [],
+  products: [],
+  currentPage: 1,
+  itemsPerPage: 5, 
+  totalPages: 0,
   isLoading: false,
   isError: false
 };
@@ -17,6 +22,11 @@ const initialState = {
 const pharmacySlice = createSlice({
   name: "pharmacy",
   initialState,
+  reducers: {
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getDashboard.fulfilled, (state, action) => {
@@ -24,21 +34,48 @@ const pharmacySlice = createSlice({
         state.isLoading = false;
         state.isError = false;
       })
-      .addCase(getAllOrders.fulfilled, (state, action) => {
-        state.allOrders = action.payload;
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.orders = action.payload;
+        state.totalPages = Math.ceil(action.payload.length / state.itemsPerPage);
         state.isLoading = false;
         state.isError = false;
       })
       .addCase(filterOrdersByName.fulfilled, (state, action) => {
-        state.allOrders = action.payload;
+        state.orders = action.payload;
+        state.isLoading = false;
+        state.isError = false;
+      })
+      .addCase(getCustomers.fulfilled, (state, action) => {
+        state.customers = action.payload;
+        state.totalPages = Math.ceil(action.payload.length / state.itemsPerPage);
+        state.isLoading = false;
+        state.isError = false;
+      })
+      .addCase(filterCustomersByName.fulfilled, (state, action) => {
+        state.customers = action.payload;
+        state.isLoading = false;
+        state.isError = false;
+      })
+      .addCase(getProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+        state.totalPages = Math.ceil(action.payload.length / state.itemsPerPage);
+        state.isLoading = false;
+        state.isError = false;
+      })
+      .addCase(filterProductsByName.fulfilled, (state, action) => {
+        state.products = action.payload;
         state.isLoading = false;
         state.isError = false;
       })
       .addMatcher(
         isAnyOf(
           getDashboard.pending,
-          getAllOrders.pending,
+          getOrders.pending,
           filterOrdersByName.pending,
+          getCustomers.pending,
+          filterCustomersByName.pending,
+          getProducts.pending,
+          filterProductsByName.pending,
         ),
         (state) => {
           state.isLoading = true;
@@ -48,8 +85,12 @@ const pharmacySlice = createSlice({
       .addMatcher(
         isAnyOf(
           getDashboard.rejected,
-          getAllOrders.rejected,
+          getOrders.rejected,
           filterOrdersByName.rejected,
+          getCustomers.rejected,
+          filterCustomersByName.rejected,
+          getProducts.rejected,
+          filterProductsByName.rejected,
         ),
         (state) => {
           state.isLoading = false;
@@ -58,5 +99,7 @@ const pharmacySlice = createSlice({
       );
   },
 });
+
+export const { setCurrentPage } = pharmacySlice.actions;
 
 export default pharmacySlice.reducer;

@@ -1,0 +1,13 @@
+.addNewProductContainer {
+  border-radius: 12px;
+  width: 335px;
+  height: 484px;
+  background-color: #fff;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}

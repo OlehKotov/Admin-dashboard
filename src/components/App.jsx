@@ -8,6 +8,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AllOrdersPage from "../pages/AllOrdersPage/AllOrdersPage";
+import CustomersDataPage from "../pages/CustomersDataPage/CustomersDataPage";
+import AllProductsPage from "../pages/AllProductsPage/AllProductsPage";
+
 
 function App() {
   return (
@@ -37,10 +40,26 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <AllProductsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <PrivateRoute>
+              <CustomersDataPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <ToastContainer autoClose={1500} />
+      <ToastContainer autoClose={500} />
     </div>
   );
 }

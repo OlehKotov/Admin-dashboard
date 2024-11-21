@@ -1,38 +1,38 @@
 import React, { useEffect } from 'react'
 import UserNameFilter from '../../components/UserNameFilter/UserNameFilter'
-import Orders from '../../components/Orders/Orders'
 import { useDispatch } from 'react-redux';
-import css from "./AllOrdersPage.module.css";
-import { filterOrdersByName, getOrders } from '../../redux/pharmacy/pharmacyOps';
+import css from "./AllProductsPage.module.css";
+import { filterProductsByName, getProducts } from '../../redux/pharmacy/pharmacyOps';
 import SharedLayout from '../../components/SharedLayout/SharedLayout';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import { setCurrentPage } from '../../redux/pharmacy/pharmacySlice';
+import Products from '../../components/Products/Products';
 
-const AllOrdersPage = () => {
+const AllProductsPage = () => {
     const dispatch = useDispatch();
-    const pageTitle = "All orders";
-
+    const pageTitle = "All products";
+  
     useEffect(() => {
-      dispatch(setCurrentPage(1));
-      dispatch(filterOrdersByName(''));
-      dispatch(getOrders());
-  }, [dispatch]);
+        dispatch(setCurrentPage(1));
+        dispatch(filterProductsByName(''));
+        dispatch(getProducts());
+    }, [dispatch]);
 
     const filterOrders = (name) => {
-      dispatch(filterOrdersByName(name));
+      dispatch(filterProductsByName(name));
     };
 
   return (
     <SharedLayout page={pageTitle}>
       <div className={css.container}>
-        <DocumentTitle>All orders</DocumentTitle>
+        <DocumentTitle>All products</DocumentTitle>
         <main className={css.mainContainer}>
         <UserNameFilter filterAction={filterOrders}/>
-        <Orders />
+        <Products />
         </main>
       </div>
     </SharedLayout>
   )
 }
 
-export default AllOrdersPage
+export default AllProductsPage

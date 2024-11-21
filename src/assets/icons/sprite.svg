@@ -83,6 +83,13 @@
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" id="filter">
     <path d="M12.8327 1.75H1.16602L5.83268 7.26833V11.0833L8.16602 12.25V7.26833L12.8327 1.75Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="add">
+    <path d="M14 8H2M8 2V14V2Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="x">
+    <path d="M18 6L6 18" stroke="#1D1E21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M6 6L18 18" stroke="#1D1E21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
 </svg>
 
 

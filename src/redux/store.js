@@ -11,11 +11,12 @@ const persistConfig = {
 };
 
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
+const persistedPharmacyReducer = persistReducer(persistConfig, pharmacyReducer);
 
 const store = configureStore({
   reducer: {
     user: persistedUserReducer,
-    pharmacy: pharmacyReducer,
+    pharmacy: persistedPharmacyReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

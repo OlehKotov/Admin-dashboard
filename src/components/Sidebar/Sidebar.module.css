@@ -87,12 +87,9 @@
 
 @media (min-width: 1440px) {
   .container {
-    /* position: absolute;
-    top: 80px;
-    left: 0; */
     border-right: 1px solid rgba(29, 30, 33, 0.1);
     width: 80px;
-    height: 100vw;
+    height: 100vh;
     background-color: #f7f8fa;
     padding-top: 40px;
   }

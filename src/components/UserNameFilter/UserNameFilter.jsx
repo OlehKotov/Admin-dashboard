@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import css from "./UserNameFilter.module.css";
 import sprite from "../../assets/icons/sprite.svg";
-import { useDispatch } from "react-redux";
-import { filterOrdersByName } from "../../redux/pharmacy/pharmacyOps";
 
-const UserNameFilter = () => {
+const UserNameFilter = ({filterAction}) => {
   const [userName, setUserName] = useState("");
-  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setUserName(e.target.value);
   };
 
   const handleFilterClick = () => {
-    dispatch(filterOrdersByName(userName));
+    filterAction(userName);
   };
+
+  // const handleFilterClick = () => {
+  //   dispatch(filterOrdersByName(userName));
+  // };
 
   return (
     <div className={css.filterContainer}>

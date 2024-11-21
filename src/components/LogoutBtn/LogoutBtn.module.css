@@ -11,7 +11,8 @@
 }
 
 .logout:hover,
-.logout:active {
+.logout:active,
+.logout:focus {
   background-color: #3f945f;
 }
 
@@ -29,6 +30,6 @@
 
 @media (min-width: 1440px) {
   .logout {
-    margin-left: 998px;
+    margin-left: 979px;
   }
 }

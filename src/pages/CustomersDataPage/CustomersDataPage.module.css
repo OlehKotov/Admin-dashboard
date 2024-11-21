@@ -1,0 +1,25 @@
+.container {
+    width: 375px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f7f8fa;
+    overflow-x: none;
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      width: 768px;
+      padding: 50px 32px;
+      overflow-x: none;
+    }
+  }
+  
+  @media (min-width: 1440px) {
+    .container {
+      width: 1360px;
+      height: 100vh;
+      margin: 0;
+      padding: 75px 40px;
+    }
+  }
+  

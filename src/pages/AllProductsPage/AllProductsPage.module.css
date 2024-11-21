@@ -12,6 +12,10 @@
     padding: 50px 32px;
     overflow-x: none;
   }
+  
+  .mainContainer {
+    position: relative;
+  }
 }
 
 @media (min-width: 1440px) {

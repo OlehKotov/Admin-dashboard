@@ -26,11 +26,13 @@
   padding-right: 14px;
   width: 335px;
   border-top: 0px;
+  background-color: #fff;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  background-color: #fff;
 }
 
 .table thead {

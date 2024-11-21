@@ -3,7 +3,7 @@ import css from "./LoginForm.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { logInValidationschema } from "../../validation/logInValidationShema";
+import { logInValidationSchema } from "../../validation/logInValidationSchema";
 import { useDispatch } from "react-redux";
 import { getCurrentUser, login } from "../../redux/users/userOps";
 
@@ -22,7 +22,7 @@ const LoginForm = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: yupResolver(logInValidationschema),
+    resolver: yupResolver(logInValidationSchema),
     defaultValues: {
       email: "",
       password: "",

@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const logInValidationschema = yup.object().shape({
+export const logInValidationSchema = yup.object().shape({
   email: yup
     .string()
     .matches(
