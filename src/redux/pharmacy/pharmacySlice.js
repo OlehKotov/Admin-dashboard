@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { filterOrdersByName, getOrders, getDashboard, getCustomers, filterCustomersByName, getProducts, filterProductsByName } from "./pharmacyOps";
+import { filterOrdersByName, getOrders, getDashboard, getCustomers, filterCustomersByName, getProducts, filterProductsByName, addNewProduct } from "./pharmacyOps";
 
 const initialState = {
   dashboard: {
@@ -67,6 +67,11 @@ const pharmacySlice = createSlice({
         state.isLoading = false;
         state.isError = false;
       })
+      .addCase(addNewProduct.fulfilled, (state, action) => {
+        state.products.push(action.payload);
+        state.isLoading = false;
+        state.isError = false;
+      })
       .addMatcher(
         isAnyOf(
           getDashboard.pending,
@@ -76,6 +81,7 @@ const pharmacySlice = createSlice({
           filterCustomersByName.pending,
           getProducts.pending,
           filterProductsByName.pending,
+          addNewProduct.pending,
         ),
         (state) => {
           state.isLoading = true;
@@ -91,6 +97,7 @@ const pharmacySlice = createSlice({
           filterCustomersByName.rejected,
           getProducts.rejected,
           filterProductsByName.rejected,
+          addNewProduct.rejected,
         ),
         (state) => {
           state.isLoading = false;

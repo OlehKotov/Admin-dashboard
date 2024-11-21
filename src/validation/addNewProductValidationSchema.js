@@ -10,6 +10,6 @@ export const addNewProductValidationSchema = yup.object().shape({
     .string()
     .min(3, "Suppliers must be at least 3 characters long")
     .required("Suppliers is required"),
-  stock: yup.number().required("Stock is required"),
-  price: yup.number().required("Price is required"),
+  stock: yup.string().required("Stock is required"),
+  price: yup.string().required("Price is required"),
 });
