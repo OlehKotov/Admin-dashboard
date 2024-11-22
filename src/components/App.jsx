@@ -10,7 +10,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import AllOrdersPage from "../pages/AllOrdersPage/AllOrdersPage";
 import CustomersDataPage from "../pages/CustomersDataPage/CustomersDataPage";
 import AllProductsPage from "../pages/AllProductsPage/AllProductsPage";
-
+import AllSuppliersPage from "../pages/AllSuppliersPage/AllSuppliersPage";
 
 function App() {
   return (
@@ -53,6 +53,14 @@ function App() {
           element={
             <PrivateRoute>
               <CustomersDataPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/suppliers"
+          element={
+            <PrivateRoute>
+              <AllSuppliersPage />
             </PrivateRoute>
           }
         />

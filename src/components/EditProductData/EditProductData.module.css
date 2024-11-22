@@ -1,0 +1,226 @@
+.addNewProductContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    position: relative;
+  }
+  
+  .formGroup {
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .header {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: #1d1e21;
+  }
+  
+  .form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .input {
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    border-radius: 60px;
+    width: 295px;
+    height: 44px;
+    background-color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: #1d1e21;
+    padding: 13px 18px;
+  }
+  
+  input::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: rgba(29, 30, 33, 0.4);
+  }
+  
+  .input:focus {
+    outline: none;
+    border: 1px solid #59b17a;
+  }
+  
+  .selectContainer {
+    position: relative;
+  }
+  
+  .select {
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    border-radius: 60px;
+    width: 295px;
+    height: 44px;
+    padding: 13px 18px;
+    appearance: none;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: rgba(29, 30, 33, 0.4);
+  }
+  
+  .select:focus {
+    outline: none;
+    border: 1px solid #59b17a;
+  }
+  
+  .select option {
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 150%;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: #59b17a;
+  }
+  
+  .select option:hover {
+    color: #fff; 
+    background-color: transparent;
+  }
+  
+  .select option:focus {
+    outline: none;
+  }
+  
+  .icon {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    pointer-events: none;
+  }
+  
+  .buttons {
+    margin-top: 26px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .addButtons {
+    border-radius: 60px;
+    padding: 13px 61px;
+    width: 146px;
+    height: 44px;
+    background-color: #59b17a;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButtons:hover,
+  .addButtons:active,
+  .addButtons:focus {
+    background-color: #3f945f;
+  }
+  
+  .cancelButtons {
+    border-radius: 60px;
+    padding: 13px 50px;
+    width: 140px;
+    height: 44px;
+    background-color: rgba(29, 30, 33, 0.1);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    color: rgba(29, 30, 33, 0.4);
+    padding: 13px 50px;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  }
+  
+  .cancelButtons:hover,
+  .cancelButtons:active,
+  .cancelButtons:focus {
+    border: 1px solid #59b17a;
+    color: #59b17a;
+    background-color: #fff;
+  }
+  
+  .error {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 120%;
+    letter-spacing: -0.03em;
+    color: #ef2447;
+    margin-left: 10px;
+    position: absolute;
+    top: 45px;
+    left: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .addNewProductContainer {
+      padding: 40px 40px 60px 40px;
+    }
+  
+    .closeButton {
+      width: 26px;
+      height: 26px;
+    }
+  
+    .header {
+      font-size: 20px;
+      line-height: 117%;
+    }
+  
+    .form {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 14px 8px;
+    }
+  
+    .input {
+      width: 224px;
+    }
+  
+    .select {
+      width: 224px;
+    }
+  
+    .addButtons {
+      padding: 13px 52px;
+      width: 133px;
+      font-size: 14px;
+      line-height: 129%;
+    }
+  
+    .cancelButtons {
+      padding: 13px 43px;
+      width: 133px;
+      font-size: 14px;
+      line-height: 129%;
+    }
+  
+    .error {
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 120%;
+      letter-spacing: -0.03em;
+      color: #ef2447;
+      margin-left: 10px;
+      position: absolute;
+      top: 45px;
+      left: 0;
+    }
+  }
+  

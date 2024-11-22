@@ -99,13 +99,6 @@ input::placeholder {
   outline: none;
 }
 
-.selectContainer select {
-  border-radius: 15px;
-  width: 100%;
-  height: 140px; /* Устанавливаем высоту для выпадающего списка */
-  overflow-y: auto; /* Добавляем вертикальный скролл */
-}
-
 .icon {
   position: absolute;
   top: 14px;

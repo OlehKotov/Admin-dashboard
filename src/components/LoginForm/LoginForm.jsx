@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { logInValidationSchema } from "../../validation/logInValidationSchema";
 import { useDispatch } from "react-redux";
-import { getCurrentUser, login } from "../../redux/users/userOps";
+import { login } from "../../redux/store/storeOps";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,12 +30,7 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data) => {
-    dispatch(login(data)).then((result) => {
-      if (login.fulfilled.match(result)) {
-        dispatch(getCurrentUser());
-        reset();
-      }
-    });
+    dispatch(login(data));
   };
 
   return (

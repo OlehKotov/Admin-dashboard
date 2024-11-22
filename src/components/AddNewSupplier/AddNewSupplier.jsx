@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import css from "./AddNewProduct.module.css";
-import { addNewProductValidationSchema } from "../../validation/addNewProductValidationSchema";
-
+import css from "./AddNewSupplier.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import BaseModal from "../BaseModal/BaseModal";
 import { addNewProduct } from "../../redux/store/storeOps";
+import { addNewSuppliersValidationSchema } from "../../validation/addNewSuppliersValidationSchema";
 
-const AddNewProduct = ({ isOpen, onRequestClose }) => {
+const AddNewSupplier = ({ isOpen, onRequestClose }) => {
+
   const [isFocused, setIsFocused] = useState(false);
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(addNewProductValidationSchema),
+    resolver: yupResolver(addNewSuppliersValidationSchema),
     defaultValues: {
       name: "",
       suppliers: "",
@@ -180,7 +180,7 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
         </form>
       </div>
     </BaseModal>
-  );
-};
+  )
+}
 
-export default AddNewProduct;
+export default AddNewSupplier

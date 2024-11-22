@@ -2,48 +2,53 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import css from "./AddNewProduct.module.css";
-import { addNewProductValidationSchema } from "../../validation/addNewProductValidationSchema";
-
+import css from "./EditProductData.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import BaseModal from "../BaseModal/BaseModal";
-import { addNewProduct } from "../../redux/store/storeOps";
+import { editProductValidationSchema } from "../../validation/editProductValidationSchema";
+import { updateProduct } from "../../redux/store/storeOps";
 
-const AddNewProduct = ({ isOpen, onRequestClose }) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const dispatch = useDispatch();
-
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(addNewProductValidationSchema),
-    defaultValues: {
-      name: "",
-      suppliers: "",
-      stock: "",
-      price: "",
-      category: "",
-    },
-  });
-
-  useEffect(() => {
-    if (!isOpen) {
-      reset();
-    }
-  }, [isOpen, reset]);
-
-  const onSubmit = async (data) => {
-    try {
-      await dispatch(addNewProduct(data));
-      reset();
-      onRequestClose();
-    } catch (error) {
-      alert("Error: " + error);
-    }
-  };
+const EditProductData = ({ isOpen, onRequestClose, product }) => {
+    const [isFocused, setIsFocused] = useState(false);
+    const dispatch = useDispatch();
+  
+    const {
+      handleSubmit,
+      control,
+      reset,
+      formState: { errors },
+    } = useForm({
+      resolver: yupResolver(editProductValidationSchema),
+      defaultValues: {
+        name: "",
+        suppliers: "",
+        stock: "",
+        price: "",
+        category: "",
+      },
+    });
+  
+    useEffect(() => {
+        if (isOpen && product) {
+          reset({
+            name: product.name || "",
+            suppliers: product.suppliers || "",
+            stock: product.stock || "",
+            price: product.price || "",
+            category: product.category || "",
+          });
+        }
+      }, [isOpen, product, reset]);
+    
+      const onSubmit = async (data) => {
+        try {      
+          await dispatch(updateProduct({ productId: product._id, updatedData: data }));
+          reset();
+          onRequestClose();
+        } catch (error) {
+          alert("Error: " + error);
+        }
+      };
 
   return (
     <BaseModal isOpen={isOpen} onRequestClose={onRequestClose}>
@@ -53,7 +58,7 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
             <use xlinkHref={`${sprite}#x`} />
           </svg>
         </button>
-        <h2 className={css.header}>Add a new product</h2>
+        <h2 className={css.header}>Edit product</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
           <div className={css.formGroup}>
@@ -167,7 +172,7 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
 
           <div className={css.buttons}>
             <button type="submit" className={css.addButtons}>
-              Add
+              Save
             </button>
             <button
               type="button"
@@ -180,7 +185,7 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
         </form>
       </div>
     </BaseModal>
-  );
-};
+  )
+}
 
-export default AddNewProduct;
+export default EditProductData

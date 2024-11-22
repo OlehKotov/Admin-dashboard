@@ -5,8 +5,8 @@ import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import Statistics from "../../components/Statistics/Statistics";
 import RecentCustomers from "../../components/RecentCustomers/RecentCustomers";
 import { useDispatch } from "react-redux";
-import { getDashboard } from "../../redux/pharmacy/pharmacyOps";
 import IncomeExpenses from "../../components/IncomeExpenses/IncomeExpenses";
+import { getDashboard } from "../../redux/store/storeOps";
 
 const Dashboard = () => {
   const dispatch = useDispatch();

@@ -6,7 +6,7 @@ import {
   selectTotalPages,
 } from "../../redux/selectors";
 import css from "./Customers.module.css";
-import { setCurrentPage } from "../../redux/pharmacy/pharmacySlice";
+import { setCurrentPage } from "../../redux/store/storeSlice";
 
 const Customers = () => {
   const customers = useSelector(selectCustomers);

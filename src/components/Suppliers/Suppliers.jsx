@@ -3,21 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectCurrentPage,
   selectProducts,
+  selectSuppliers,
   selectTotalPages,
 } from "../../redux/selectors";
-import css from "./Products.module.css";
+import css from "./Suppliers.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import AddNewProduct from "../AddNewProduct/AddNewProduct";
 import EditProductData from "../EditProductData/EditProductData";
 import { deleteProduct } from "../../redux/store/storeOps";
 import { setCurrentPage } from "../../redux/store/storeSlice";
+import AddNewSupplier from "../AddNewSupplier/AddNewSupplier";
 
+const Suppliers = () => {
 
-const Products = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState(null);
-  const products = useSelector(selectProducts);
+  const suppliers = useSelector(selectSuppliers);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
   const dispatch = useDispatch();
@@ -44,55 +46,59 @@ const Products = () => {
     setCurrentProduct(null);
   };
 
-  const onDeleteProduct = async (productId) => {
-    try {
-      await dispatch(deleteProduct(productId));
-    } catch (error) {
-      alert("Error: " + error);
+  const getRowClassName = (status) => {
+    switch (status) {
+      case "Active":
+        return css.active;
+      case "Deactive":
+        return css.deactive;
+      default:
+        return "";
     }
   };
 
   return (
-    <>
-      <div className={css.allProducts}>
+     <>
+      <div className={css.allSuppliers}>
         <button className={css.button} onClick={handleAddOpenModal}>
-          <svg width="16" height="16" className={css.buttonAdd}>
-            <use xlinkHref={`${sprite}#add`} />
-          </svg>
-          Add a new product
+          Add a new suppliers
         </button>
-        <h2 className={css.header}>All products</h2>
+        <h2 className={css.header}>All suppliers</h2>
         <div className={css.tablecontainer}>
           <table className={css.table}>
             <thead>
               <tr>
-                <th>Product Info</th>
-                <th>Category</th>
-                <th>Stock</th>
-                <th>Suppliers</th>
-                <th>Price</th>
+                <th>Suppliers Info</th>
+                <th>Address</th>
+                <th>Company</th>
+                <th>Delivery date</th>
+                <th>Ammount</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {products &&
-                products.map((product) => (
-                  <tr key={product._id}>
-                    <td>{product.name}</td>
-                    <td>{product.category}</td>
-                    <td>{product.stock}</td>
-                    <td>{product.suppliers}</td>
-                    <td>{product.price}</td>
-                    <td className={css.buttonAction}>
-                      <button onClick={() => handleEditOpenModal(product)}>
-                        <svg width="32" height="32">
-                          <use xlinkHref={`${sprite}#edit`} />
+              {suppliers &&
+                suppliers.map((supplier) => (
+                  <tr key={supplier._id}>
+                    <td>{supplier.name}</td>
+                    <td>{supplier.address}</td>
+                    <td>{supplier.suppliers}</td>
+                    <td>{supplier.date}</td>
+                    <td>{supplier.amount}</td>
+                    <td><div
+                      className={`${getRowClassName(supplier.status)} ${
+                        css.additionalClass
+                      }`}
+                    >
+                      {supplier.status}
+                    </div></td>
+                    <td>
+                      <button onClick={() => handleEditOpenModal(supplier)} className={css.buttonAction}>
+                        <svg width="14" height="14">
+                          <use xlinkHref={`${sprite}#edit-2`} />
                         </svg>
-                      </button>
-                      <button onClick={() => onDeleteProduct(product._id)}>
-                        <svg width="32" height="32">
-                          <use xlinkHref={`${sprite}#del`} />
-                        </svg>
+                        Edit
                       </button>
                     </td>
                   </tr>
@@ -113,7 +119,7 @@ const Products = () => {
           ))}
         </div>
       </div>
-      <AddNewProduct
+      <AddNewSupplier
         isOpen={isAddModalOpen}
         onRequestClose={handleAddCloseModal}
       />
@@ -123,7 +129,7 @@ const Products = () => {
         product={currentProduct}
       />
     </>
-  );
-};
+  )
+}
 
-export default Products;
+export default Suppliers
