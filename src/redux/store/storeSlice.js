@@ -87,7 +87,7 @@ const storeSlice = createSlice({
         state.isError = false;
       })
       .addCase(addNewProduct.fulfilled, (state, action) => {
-        state.products.push(action.payload);
+        state.products.unshift(action.payload);
         state.isLoading = false;
         state.isError = false;
       })
@@ -118,7 +118,7 @@ const storeSlice = createSlice({
         state.isError = false;
       })
       .addCase(addNewSupplier.fulfilled, (state, action) => {
-        state.suppliers.push(action.payload);
+        state.suppliers.unshift(action.payload);
         state.isLoading = false;
         state.isError = false;
       })

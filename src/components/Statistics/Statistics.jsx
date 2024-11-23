@@ -27,7 +27,7 @@ const Statistics = () => {
             <svg width="18" height="18">
               <use xlinkHref={`${sprite}#streamline_money-cash-coins`} />
             </svg>
-            All products
+            All suppliers
           </div>
           <div className={css.statisticsBlockValue}>
             {dashboard.totalSuppliers}
