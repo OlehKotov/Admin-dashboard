@@ -28,21 +28,20 @@
 }
 
 .tablecontainer::-webkit-scrollbar {
-  height: 8px; 
-  border-radius: 14px; 
-  background: #f1f1f1; 
+  height: 8px;
+  border-radius: 14px;
+  background: #f1f1f1;
 }
 
-
 .tablecontainer::-webkit-scrollbar-thumb {
-  border-radius: 14px; 
-  background: #e6e6e6; 
-  width: 180px; 
+  border-radius: 14px;
+  background: #e6e6e6;
+  width: 180px;
 }
 
 .tablecontainer::-webkit-scrollbar-track {
-  border-radius: 14px; 
-  background: #f1f1f1; 
+  border-radius: 14px;
+  background: #f1f1f1;
 }
 
 .table {
@@ -151,30 +150,29 @@
   width: 9.5px;
   height: 9.5px;
   border-radius: 50%;
-  background-color: #E7F1ED;
+  background-color: #e7f1ed;
   cursor: pointer;
 }
 
 .activeDot {
-  background-color: #59B17A;
+  background-color: #59b17a;
 }
-
 
 @media (min-width: 768px) {
   .allOrders {
     width: 704px;
     padding-bottom: 100px;
   }
-  
+
   .header {
     width: 100%;
     max-width: 1280px;
-    height: 64px; 
+    height: 64px;
     font-size: 18px;
     line-height: 133%;
     padding: 20px;
   }
-  
+
   .tablecontainer {
     width: 100%;
     max-width: 1280px;
@@ -182,47 +180,47 @@
     padding-right: 20px;
     overflow-x: auto;
   }
-  
+
   .tablecontainer::-webkit-scrollbar-thumb {
-    width: 252px; 
+    width: 252px;
   }
-  
+
   .table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
   }
-  
+
   .table thead {
     font-size: 14px;
     line-height: 129%;
   }
-  
+
   .table tr:first-child {
     padding-left: 20px;
   }
-  
+
   .table th,
   .table td {
     padding: 20px;
     min-width: 230px;
   }
-  
+
   .table td {
     font-size: 16px;
     line-height: 112%;
   }
-  
+
   .tableName {
     flex-direction: row;
     align-items: center;
   }
-  
+
   .tableName img {
     width: 36px;
     height: 36px;
   }
-  
+
   .pageDot {
     width: 12px;
     height: 12px;

@@ -24,7 +24,7 @@ const AllSuppliersPage = () => {
   return (
     <SharedLayout page={pageTitle}>
       <div className={css.container}>
-        <DocumentTitle>All suppliera</DocumentTitle>
+        <DocumentTitle>All suppliers</DocumentTitle>
         <main className={css.mainContainer}>
           <UserNameFilter filterAction={filterSuppliers} />
           <Suppliers />

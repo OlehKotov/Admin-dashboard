@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCurrentPage,
+  selectIsLoading,
   selectProducts,
   selectTotalPages,
 } from "../../redux/selectors";
@@ -11,7 +12,7 @@ import AddNewProduct from "../AddNewProduct/AddNewProduct";
 import EditProductData from "../EditProductData/EditProductData";
 import { deleteProduct } from "../../redux/store/storeOps";
 import { setCurrentPage } from "../../redux/store/storeSlice";
-
+import Loader from "../Loader/Loader";
 
 const Products = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -20,6 +21,7 @@ const Products = () => {
   const products = useSelector(selectProducts);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
+  const loading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const handlePageChange = (page) => {
@@ -52,6 +54,12 @@ const Products = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <Loader />
+    );
+  }
+
   return (
     <>
       <div className={css.allProducts}>
@@ -75,7 +83,13 @@ const Products = () => {
               </tr>
             </thead>
             <tbody>
-              {products &&
+              {products.length === 0 ? (
+                <tr>
+                  <td colSpan="6" className={css.noData}>
+                    No products available
+                  </td>
+                </tr>
+              ) : (
                 products.map((product) => (
                   <tr key={product._id}>
                     <td>{product.name}</td>
@@ -96,7 +110,8 @@ const Products = () => {
                       </button>
                     </td>
                   </tr>
-                ))}
+                ))
+              )}
             </tbody>
           </table>
         </div>

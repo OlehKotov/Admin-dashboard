@@ -5,13 +5,13 @@
   transform: translate(-50%, -50%);
   border-radius: 12px;
   width: 335px;
-  height: 484px;
+  height: auto;
   z-index: 1010;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   pointer-events: auto;
   max-height: 90vh;
-  overflow: auto;
-  overflow-x: hidden;
+  overflow-x: none;
+  overflow-y: none;
   background-color: #fff;
 }
 
@@ -33,6 +33,6 @@ body.modal-open {
 @media (min-width: 768px) {
   .modalContainer {
     width: 536px;
-    height: 412px;
+    height: auto;
   }
 }

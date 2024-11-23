@@ -97,7 +97,7 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
                     <option value="Dental Care">Dental Care</option>
                     <option value="Skin Care">Skin Care</option>
                   </select>
-                  <svg className={css.icon} width="18px" height="18px">
+                  <svg className={css.icon} width="16px" height="16px">
                     <use xlinkHref={`${sprite}#${isFocused ? "up" : "down"}`} />
                   </svg>
                 </div>

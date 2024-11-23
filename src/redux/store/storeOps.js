@@ -247,3 +247,57 @@ export const filterSuppliersByName = createAsyncThunk(
     }
   }
 );
+
+export const addNewSupplier = createAsyncThunk(
+  "store/addNewSupplier",
+  async (supplierData, { getState, rejectWithValue }) => {
+    const state = getState();
+    const token = state.store.token;
+
+    if (!token) {
+      return rejectWithValue("No token found");
+    }
+
+    try {
+      const { data } = await instance.post("/suppliers", supplierData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Supplier successfully created!");
+      return data.data;
+    } catch (error) {
+      toast.error("An error occurred while creating the supplier.");
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
+export const updateSupplier = createAsyncThunk(
+  "store/updateSupplier",
+  async ({ supplierId, updatedData }, { getState, rejectWithValue }) => {
+    const state = getState();
+    const token = state.store.token;
+
+    if (!token) {
+      return rejectWithValue("No token found");
+    }
+
+    try {
+      const response = await instance.put(
+        `/suppliers/${supplierId}`,
+        updatedData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success("Supplier successfully updated!");
+      return response.data;
+    } catch (error) {
+      toast.error("An error occurred while updating the supplier.");
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);

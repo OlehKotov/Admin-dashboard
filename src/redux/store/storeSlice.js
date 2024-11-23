@@ -10,6 +10,8 @@ import {
   login,
   logout,
   updateProduct,
+  addNewSupplier,
+  updateSupplier,
 } from "./storeOps";
 
 const initialState = {
@@ -115,6 +117,22 @@ const storeSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
       })
+      .addCase(addNewSupplier.fulfilled, (state, action) => {
+        state.suppliers.push(action.payload);
+        state.isLoading = false;
+        state.isError = false;
+      })
+      .addCase(updateSupplier.fulfilled, (state, action) => {
+        const updatedSupplier = action.payload.data;
+        const index = state.suppliers.findIndex(
+          (supplier) => supplier._id === updatedSupplier._id
+        );
+        if (index !== -1) {
+          state.suppliers[index] = updatedSupplier;
+        }
+        state.isLoading = false;
+        state.isError = false;
+      })
       .addMatcher(
         isAnyOf(
           login.pending,
@@ -126,7 +144,9 @@ const storeSlice = createSlice({
           addNewProduct.pending,
           deleteProduct.pending,
           updateProduct.pending,
-          filterSuppliersByName.pending
+          filterSuppliersByName.pending,
+          addNewSupplier.pending,
+          updateSupplier.pending,
         ),
         (state) => {
           state.isLoading = true;
@@ -144,7 +164,9 @@ const storeSlice = createSlice({
           addNewProduct.rejected,
           deleteProduct.rejected,
           updateProduct.rejected,
-          filterSuppliersByName.rejected
+          filterSuppliersByName.rejected,
+          addNewSupplier.rejected,
+          updateSupplier.rejected,
         ),
         (state) => {
           state.isLoading = false;

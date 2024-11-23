@@ -2,16 +2,19 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCurrentPage,
+  selectIsLoading,
   selectOrders,
   selectTotalPages,
 } from "../../redux/selectors";
 import css from "./Orders.module.css";
 import { setCurrentPage } from "../../redux/store/storeSlice";
+import Loader from "../Loader/Loader";
 
 const Orders = () => {
   const orders = useSelector(selectOrders);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
+  const loading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const handlePageChange = (page) => {
@@ -35,6 +38,12 @@ const Orders = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <Loader />
+    );
+  }
+
   return (
     <div className={css.allOrders}>
       <h2 className={css.header}>All orders</h2>
@@ -51,7 +60,13 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders &&
+            {orders.length === 0 ? (
+              <tr>
+                <td colSpan="6" className={css.noData}>
+                  No orders available
+                </td>
+              </tr>
+            ) : (
               orders.map((order) => (
                 <tr key={order._id}>
                   <td className={css.tableName}>
@@ -76,7 +91,8 @@ const Orders = () => {
                     </div>
                   </td>
                 </tr>
-              ))}
+              ))
+            )}
           </tbody>
         </table>
       </div>

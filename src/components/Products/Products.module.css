@@ -145,11 +145,12 @@
 .buttonAdd:hover,
 .buttonAdd:active,
 .buttonAdd:focus {
-    background-color: #3f945f;
+  background-color: #3f945f;
 }
 
 .buttonAction {
-    display: flex;gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 @media (min-width: 768px) {

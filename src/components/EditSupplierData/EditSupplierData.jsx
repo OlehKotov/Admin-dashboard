@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import css from "./AddNewSupplier.module.css";
+import css from "./EditSupplierData.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import BaseModal from "../BaseModal/BaseModal";
-import { addNewSupplier } from "../../redux/store/storeOps";
-import { addNewSuppliersValidationSchema } from "../../validation/addNewSuppliersValidationSchema";
+import { updateSupplier } from "../../redux/store/storeOps";
+import { editSupplierValidationSchema } from "../../validation/editSupplierValidationSchema";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 
-const AddNewSupplier = ({ isOpen, onRequestClose }) => {
+const EditSupplierData = ({ isOpen, onRequestClose, supplier }) => {
   const [isFocused, setIsFocused] = useState(false);
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const AddNewSupplier = ({ isOpen, onRequestClose }) => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(addNewSuppliersValidationSchema),
+    resolver: yupResolver(editSupplierValidationSchema),
     defaultValues: {
       name: "",
       address: "",
@@ -33,19 +33,27 @@ const AddNewSupplier = ({ isOpen, onRequestClose }) => {
   });
 
   useEffect(() => {
-    if (!isOpen) {
-      reset();
+    if (isOpen && supplier) {
+      reset({
+        name: supplier.name || "",
+        address: supplier.address || "",
+        suppliers: supplier.suppliers || "",
+        date: supplier.date || "",
+        amount: supplier.amount || "",
+        status: supplier.status || "",
+      });
     }
-  }, [isOpen, reset]);
+  }, [isOpen, supplier, reset]);
 
   const onSubmit = async (data) => {
     const formattedData = {
       ...data,
       date: data.date ? format(new Date(data.date), "MMMM d, yyyy") : null,
     };
-
     try {
-      await dispatch(addNewSupplier(formattedData));
+      await dispatch(
+        updateSupplier({ supplierId: supplier._id, updatedData: formattedData })
+      );
       reset();
       onRequestClose();
     } catch (error) {
@@ -61,7 +69,7 @@ const AddNewSupplier = ({ isOpen, onRequestClose }) => {
             <use xlinkHref={`${sprite}#x`} />
           </svg>
         </button>
-        <h2 className={css.header}>Add a new suppliers</h2>
+        <h2 className={css.header}>Edit data</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
           <div className={css.formGroup}>
@@ -215,4 +223,4 @@ const AddNewSupplier = ({ isOpen, onRequestClose }) => {
   );
 };
 
-export default AddNewSupplier;
+export default EditSupplierData;

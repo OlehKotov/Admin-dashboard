@@ -1,202 +1,208 @@
 .allOrders {
-    width: 335px;
-    background-color: #f7f8fa;
-    padding-bottom: 20px;
+  width: 335px;
+  background-color: #f7f8fa;
+  padding-bottom: 20px;
+}
+
+.header {
+  border: 0px solid rgba(29, 30, 33, 0.08);
+  border-radius: 8px 8px 0 0;
+  height: 48px;
+  background-color: #e7f1ed;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d1e21;
+  padding: 14px;
+}
+
+.tablecontainer {
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 0 0 8px 8px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-top: 0px;
+  width: 100%;
+  background-color: #fff;
+  overflow-x: auto;
+}
+
+.tablecontainer::-webkit-scrollbar {
+  height: 8px;
+  border-radius: 14px;
+  background: #f1f1f1;
+}
+
+.tablecontainer::-webkit-scrollbar-thumb {
+  border-radius: 14px;
+  background: #e6e6e6;
+  width: 180px;
+}
+
+.tablecontainer::-webkit-scrollbar-track {
+  border-radius: 14px;
+  background: #f1f1f1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.table thead {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: rgba(29, 30, 33, 0.4);
+}
+
+.table tr:first-child {
+  padding-left: 10px;
+}
+
+.table th,
+.table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+  min-width: 110px;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: none;
+}
+
+.table td {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: #1d1e21;
+}
+
+.table th:first-child,
+.table td:first-child {
+  padding-left: 0;
+}
+
+.tableName {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tableName img {
+  border-radius: 30px;
+  width: 24px;
+  height: 24px;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pageDot {
+  width: 9.5px;
+  height: 9.5px;
+  border-radius: 50%;
+  background-color: #e7f1ed;
+  cursor: pointer;
+}
+
+.activeDot {
+  background-color: #59b17a;
+}
+
+.noData {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 117%;
+  color: #1d1e21;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .allOrders {
+    width: 704px;
+    padding-bottom: 100px;
   }
-  
+
   .header {
-    border: 0px solid rgba(29, 30, 33, 0.08);
-    border-radius: 8px 8px 0 0;
-    height: 48px;
-    background-color: #e7f1ed;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 125%;
-    color: #1d1e21;
-    padding: 14px;
-  }
-  
-  .tablecontainer {
-    border: 1px solid rgba(29, 30, 33, 0.1);
-    border-radius: 0 0 8px 8px;
-    padding-left: 14px;
-    padding-right: 14px;
-    border-top: 0px;
     width: 100%;
-    background-color: #fff;
+    max-width: 1280px;
+    height: 64px;
+    font-size: 18px;
+    line-height: 133%;
+    padding: 20px;
+  }
+
+  .tablecontainer {
+    width: 100%;
+    max-width: 1280px;
+    padding-left: 20px;
+    padding-right: 20px;
     overflow-x: auto;
   }
-  
-  .tablecontainer::-webkit-scrollbar {
-    height: 8px; 
-    border-radius: 14px; 
-    background: #f1f1f1; 
-  }
-  
-  
+
   .tablecontainer::-webkit-scrollbar-thumb {
-    border-radius: 14px; 
-    background: #e6e6e6; 
-    width: 180px; 
+    width: 252px;
   }
-  
-  .tablecontainer::-webkit-scrollbar-track {
-    border-radius: 14px; 
-    background: #f1f1f1; 
-  }
-  
+
   .table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
   }
-  
+
   .table thead {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 117%;
-    color: rgba(29, 30, 33, 0.4);
+    font-size: 14px;
+    line-height: 129%;
   }
-  
+
   .table tr:first-child {
-    padding-left: 10px;
+    padding-left: 20px;
   }
-  
+
   .table th,
   .table td {
-    padding: 14px;
-    text-align: left;
-    border-bottom: 1px solid rgba(29, 30, 33, 0.1);
-    border-right: 1px solid rgba(29, 30, 33, 0.1);
-    min-width: 110px;
+    padding: 20px;
+    min-width: 230px;
   }
-  
-  .table th:last-child,
-  .table td:last-child {
-    border-right: none;
-  }
-  
+
   .table td {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 117%;
-    color: #1d1e21;
+    font-size: 16px;
+    line-height: 112%;
   }
-  
-  .table th:first-child,
-  .table td:first-child {
-    padding-left: 0;
-  }
-  
+
   .tableName {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
   }
-  
+
   .tableName img {
-    border-radius: 30px;
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
   }
-  
-  .table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-  }
-  
+
   .pageDot {
-    width: 9.5px;
-    height: 9.5px;
-    border-radius: 50%;
-    background-color: #E7F1ED;
-    cursor: pointer;
+    width: 12px;
+    height: 12px;
   }
-  
-  .activeDot {
-    background-color: #59B17A;
+}
+
+@media (min-width: 1440px) {
+  .allOrders {
+    width: 1280px;
+    padding-bottom: 40px;
   }
-  
-  
-  @media (min-width: 768px) {
-    .allOrders {
-      width: 704px;
-      padding-bottom: 100px;
-    }
-    
-    .header {
-      width: 100%;
-      max-width: 1280px;
-      height: 64px; 
-      font-size: 18px;
-      line-height: 133%;
-      padding: 20px;
-    }
-    
-    .tablecontainer {
-      width: 100%;
-      max-width: 1280px;
-      padding-left: 20px;
-      padding-right: 20px;
-      overflow-x: auto;
-    }
-    
-    .tablecontainer::-webkit-scrollbar-thumb {
-      width: 252px; 
-    }
-    
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: #fff;
-    }
-    
-    .table thead {
-      font-size: 14px;
-      line-height: 129%;
-    }
-    
-    .table tr:first-child {
-      padding-left: 20px;
-    }
-    
-    .table th,
-    .table td {
-      padding: 20px;
-      min-width: 230px;
-    }
-    
-    .table td {
-      font-size: 16px;
-      line-height: 112%;
-    }
-    
-    .tableName {
-      flex-direction: row;
-      align-items: center;
-    }
-    
-    .tableName img {
-      width: 36px;
-      height: 36px;
-    }
-    
-    .pageDot {
-      width: 12px;
-      height: 12px;
-    }
-  }
-  
-  @media (min-width: 1440px) {
-    .allOrders {
-      width: 1280px;
-      padding-bottom: 40px;
-    }
-  }
-  
+}
