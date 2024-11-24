@@ -10,9 +10,16 @@ import { addNewSuppliersValidationSchema } from "../../validation/addNewSupplier
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import Select from "react-select";
+
+const options = [
+  { value: "Active", label: "Active" },
+  { value: "Deactive", label: "Deactive" },
+];
 
 const AddNewSupplier = ({ isOpen, onRequestClose }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [currentStatus, setCurrentStatus] = useState("");
   const dispatch = useDispatch();
 
   const {
@@ -31,6 +38,12 @@ const AddNewSupplier = ({ isOpen, onRequestClose }) => {
       status: "",
     },
   });
+
+  const getValue = () => {
+    return currentStatus
+      ? options.find((status) => status.value === currentStatus)
+      : "";
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -169,23 +182,27 @@ const AddNewSupplier = ({ isOpen, onRequestClose }) => {
           <div className={css.formGroup}>
             <Controller
               name="status"
-              id="status"
               control={control}
               render={({ field }) => (
                 <div className={css.selectContainer}>
-                  <select
+                  <Select
                     {...field}
                     name="status"
-                    className={css.select}
+                    options={options}
+                    placeholder={"Status"}
+                    classNamePrefix="react-select"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                  >
-                    <option value="" disabled hidden>
-                      Status
-                    </option>
-                    <option value="Active">Active</option>
-                    <option value="Deactive">Deactive</option>
-                  </select>
+                    value={getValue()}
+                    onChange={(selectedOption) => {
+                      setCurrentStatus(
+                        selectedOption ? selectedOption.value : ""
+                      );
+                      field.onChange(
+                        selectedOption ? selectedOption.value : ""
+                      );
+                    }}
+                  />
                   <svg className={css.icon} width="16px" height="16px">
                     <use xlinkHref={`${sprite}#${isFocused ? "up" : "down"}`} />
                   </svg>

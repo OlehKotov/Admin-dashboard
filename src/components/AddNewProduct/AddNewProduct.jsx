@@ -4,13 +4,24 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import css from "./AddNewProduct.module.css";
 import { addNewProductValidationSchema } from "../../validation/addNewProductValidationSchema";
-
+import Select from "react-select";
 import sprite from "../../assets/icons/sprite.svg";
 import BaseModal from "../BaseModal/BaseModal";
 import { addNewProduct } from "../../redux/store/storeOps";
 
+const options = [
+  { value: "Medicine", label: "Medicine" },
+  { value: "Heart", label: "Heart" },
+  { value: "Head", label: "Head" },
+  { value: "Hand", label: "Hand" },
+  { value: "Leg", label: "Leg" },
+  { value: "Dental_care", label: "Dental Care" },
+  { value: "Skin_care", label: "Skin Care" },
+];
+
 const AddNewProduct = ({ isOpen, onRequestClose }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("");
   const dispatch = useDispatch();
 
   const {
@@ -28,6 +39,12 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
       category: "",
     },
   });
+
+  const getValue = () => {
+    return currentCategory
+      ? options.find((category) => category.value === currentCategory)
+      : "";
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -79,24 +96,24 @@ const AddNewProduct = ({ isOpen, onRequestClose }) => {
               control={control}
               render={({ field }) => (
                 <div className={css.selectContainer}>
-                  <select
+                  <Select
                     {...field}
                     name="category"
-                    className={css.select}
+                    options={options}
+                    placeholder={"Category"}
+                    classNamePrefix="react-select"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                  >
-                    <option value="" disabled hidden>
-                      Category
-                    </option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Heart">Heart</option>
-                    <option value="Head">Head</option>
-                    <option value="Hand">Hand</option>
-                    <option value="Leg">Leg</option>
-                    <option value="Dental Care">Dental Care</option>
-                    <option value="Skin Care">Skin Care</option>
-                  </select>
+                    value={getValue()}
+                    onChange={(selectedOption) => {
+                      setCurrentCategory(
+                        selectedOption ? selectedOption.value : ""
+                      );
+                      field.onChange(
+                        selectedOption ? selectedOption.value : ""
+                      );
+                    }}
+                  />
                   <svg className={css.icon} width="16px" height="16px">
                     <use xlinkHref={`${sprite}#${isFocused ? "up" : "down"}`} />
                   </svg>

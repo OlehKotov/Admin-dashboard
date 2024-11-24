@@ -41,3 +41,131 @@ a {
 input {
   outline: none;
 }
+
+.react-select-container {
+  width: 295px !important;
+  height: auto !important;
+}
+
+.react-select__control {
+  border: 1px solid rgba(29, 30, 33, 0.1) !important;
+  border-radius: 60px !important;
+  width: 295px !important;
+  height: auto !important;
+  padding: 11px 12px !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 150% !important;
+  color: rgba(29, 30, 33, 0.8) !important;
+}
+
+.react-select__control--is-focused {
+  border-color: #59b17a !important;
+  box-shadow: none !important;
+}
+
+.react-select__menu {
+  border-radius: 15px !important;
+  width: 295px !important;
+  height: auto !important;
+  background-color: #59b17a !important;
+  overflow-y: scroll !important;
+  padding-right: 8px !important;
+  pointer-events: auto !important;
+  overflow-x: hidden !important;
+  display: block !important;
+}
+
+.react-select__menu-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  padding-bottom: 8px !important;
+}
+
+.react-select__menu::-webkit-scrollbar {
+  border-radius: 12px !important;
+  width: 6px !important;
+  height: 65px !important;
+}
+
+.react-select__menu::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  border-radius: 12px !important;
+}
+
+.react-select__menu::-webkit-scrollbar-track {
+  background-color: #59b17a !important;
+  border-radius: 12px !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.react-select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.8) !important;
+  display: flex !important;
+  gap: 6px !important;
+}
+
+.react-select__placeholder {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 150% !important;
+  color: rgba(29, 30, 33, 0.4) !important;
+  margin: 0 !important;
+}
+
+.react-select__option {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 150% !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  padding: 0px 12px !important;
+}
+
+.react-select__option--is-focused {
+  color: #fff !important;
+  background-color: #59b17a !important;
+  border-radius: 60px !important;
+}
+
+.react-select__indicators {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .react-select-container {
+    width: 224px !important;
+  }
+
+  .react-select__control {
+    width: 224px !important;
+  }
+
+  .react-select__menu {
+    width: 224px !important;
+  }
+
+  .react-select__menu::-webkit-scrollbar {
+    border-radius: 12px;
+    width: 6px !important;
+    height: 65px !important;
+  }
+
+  .react-select__menu::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+  }
+
+  .react-select__menu::-webkit-scrollbar-track {
+    background-color: #59b17a;
+    border-radius: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+}

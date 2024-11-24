@@ -62,43 +62,6 @@
     position: relative;
   }
   
-  .select {
-    border: 1px solid rgba(29, 30, 33, 0.1);
-    border-radius: 60px;
-    width: 295px;
-    height: 44px;
-    padding: 13px 18px;
-    appearance: none;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 150%;
-    color: rgba(29, 30, 33, 0.4);
-  }
-  
-  .select:focus {
-    outline: none;
-    border: 1px solid #59b17a;
-  }
-  
-  .select option {
-    border-radius: 15px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 150%;
-    letter-spacing: 150%;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: #59b17a;
-  }
-  
-  .select option:hover {
-    color: #fff; 
-    background-color: transparent;
-  }
-  
-  .select option:focus {
-    outline: none;
-  }
-  
   .icon {
     position: absolute;
     top: 14px;
@@ -190,10 +153,6 @@
     }
   
     .input {
-      width: 224px;
-    }
-  
-    .select {
       width: 224px;
     }
   

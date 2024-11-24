@@ -7,48 +7,68 @@ import sprite from "../../assets/icons/sprite.svg";
 import BaseModal from "../BaseModal/BaseModal";
 import { editProductValidationSchema } from "../../validation/editProductValidationSchema";
 import { updateProduct } from "../../redux/store/storeOps";
+import Select from "react-select";
+
+const options = [
+  { value: "Medicine", label: "Medicine" },
+  { value: "Heart", label: "Heart" },
+  { value: "Head", label: "Head" },
+  { value: "Hand", label: "Hand" },
+  { value: "Leg", label: "Leg" },
+  { value: "Dental_care", label: "Dental Care" },
+  { value: "Skin_care", label: "Skin Care" },
+];
 
 const EditProductData = ({ isOpen, onRequestClose, product }) => {
-    const [isFocused, setIsFocused] = useState(false);
-    const dispatch = useDispatch();
-  
-    const {
-      handleSubmit,
-      control,
-      reset,
-      formState: { errors },
-    } = useForm({
-      resolver: yupResolver(editProductValidationSchema),
-      defaultValues: {
-        name: "",
-        suppliers: "",
-        stock: "",
-        price: "",
-        category: "",
-      },
-    });
-  
-    useEffect(() => {
-        if (isOpen && product) {
-          reset({
-            name: product.name || "",
-            suppliers: product.suppliers || "",
-            stock: product.stock || "",
-            price: product.price || "",
-            category: product.category || "",
-          });
-        }
-      }, [isOpen, product, reset]);
-    
-      const onSubmit = async (data) => {
-        try {      
-          await dispatch(updateProduct({ productId: product._id, updatedData: data }));
-          reset();
-          onRequestClose();
-        } catch (error) {
-          alert("Error: " + error);
-        }
-      };
+  const [isFocused, setIsFocused] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("");
+  const dispatch = useDispatch();
+
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(editProductValidationSchema),
+    defaultValues: {
+      name: "",
+      suppliers: "",
+      stock: "",
+      price: "",
+      category: "",
+    },
+  });
+
+  const getValue = () => {
+    return currentCategory
+      ? options.find((category) => category.value === currentCategory)
+      : "";
+  };
+
+  useEffect(() => {
+    if (isOpen && product) {
+      reset({
+        name: product.name || "",
+        suppliers: product.suppliers || "",
+        stock: product.stock || "",
+        price: product.price || "",
+        category: product.category || "",
+      });
+    }
+  }, [isOpen, product, reset]);
+
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(
+        updateProduct({ productId: product._id, updatedData: data })
+      );
+      reset();
+      onRequestClose();
+    } catch (error) {
+      alert("Error: " + error);
+    }
+  };
 
   return (
     <BaseModal isOpen={isOpen} onRequestClose={onRequestClose}>
@@ -84,25 +104,25 @@ const EditProductData = ({ isOpen, onRequestClose, product }) => {
               control={control}
               render={({ field }) => (
                 <div className={css.selectContainer}>
-                  <select
+                  <Select
                     {...field}
                     name="category"
-                    className={css.select}
+                    options={options}
+                    placeholder={"Category"}
+                    classNamePrefix="react-select"
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
-                  >
-                    <option value="" disabled hidden>
-                      Category
-                    </option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Heart">Heart</option>
-                    <option value="Head">Head</option>
-                    <option value="Hand">Hand</option>
-                    <option value="Leg">Leg</option>
-                    <option value="Dental Care">Dental Care</option>
-                    <option value="Skin Care">Skin Care</option>
-                  </select>
-                  <svg className={css.icon} width="18px" height="18px">
+                    value={getValue()}
+                    onChange={(selectedOption) => {
+                      setCurrentCategory(
+                        selectedOption ? selectedOption.value : ""
+                      );
+                      field.onChange(
+                        selectedOption ? selectedOption.value : ""
+                      );
+                    }}
+                  />
+                  <svg className={css.icon} width="16px" height="16px">
                     <use xlinkHref={`${sprite}#${isFocused ? "up" : "down"}`} />
                   </svg>
                 </div>
@@ -185,7 +205,7 @@ const EditProductData = ({ isOpen, onRequestClose, product }) => {
         </form>
       </div>
     </BaseModal>
-  )
-}
+  );
+};
 
-export default EditProductData
+export default EditProductData;
